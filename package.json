@@ -14,7 +14,11 @@
         "test": "echo \"No tests yet\""
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx,scss,css,json,md}": "prettier --write"
+        "*.{ts,tsx,js,jsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{scss,css,json,md}": "prettier --write"
     },
     "dependencies": {
         "next": "15.3.2",

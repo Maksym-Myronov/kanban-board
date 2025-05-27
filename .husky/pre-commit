@@ -1,11 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# Перейти в корінь проєкту
 cd "$(git rev-parse --show-toplevel)"
 
-# Запустити ESLint з автофіксом
-npx eslint src --ext .ts,.tsx,.js,.jsx --fix
-
-# Запустити lint-staged
 npx lint-staged
