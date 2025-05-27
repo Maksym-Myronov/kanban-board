@@ -1,0 +1,29 @@
+.theme-toggle {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+
+    &--light {
+        background-color: #f0f0f0;
+        color: #222;
+
+        &:hover {
+            background-color: #e0e0e0;
+        }
+    }
+
+    &--dark {
+        background-color: #222;
+        color: #f0f0f0;
+
+        &:hover {
+            background-color: #333;
+        }
+    }
+}
