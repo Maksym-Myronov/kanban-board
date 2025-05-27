@@ -1,3 +1,7 @@
+name: Next.js CI with pnpm (Windows)
+
+on: [push, pull_request]
+
 jobs:
     build-test:
         runs-on: windows-latest
