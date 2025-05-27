@@ -9,6 +9,7 @@
         "start": "next start",
         "lint": "eslint src --ext .ts,.tsx,.js,.jsx --fix",
         "format": "prettier --write .",
+        "format:check": "prettier --check .",
         "prepare": "husky install",
         "test": "echo \"No tests yet\""
     },
