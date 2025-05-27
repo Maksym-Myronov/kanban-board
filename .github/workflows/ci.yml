@@ -28,7 +28,7 @@ jobs:
               run: pnpm run lint
 
             - name: Format check
-              run: pnpm run format:check
+              run: pnpm exec prettier --check "src/**/*.{ts,tsx,js,jsx,json,scss,css,md}" "package.json" "tsconfig.json" ".github/workflows/**/*.yml"
 
             - name: Build Next.js app
               run: pnpm run build

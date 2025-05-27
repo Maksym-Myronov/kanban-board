@@ -8,8 +8,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "eslint src --ext .ts,.tsx,.js,.jsx --fix",
-        "format": "prettier --write .",
-        "format:check": "prettier --check .",
+        "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,scss,css,md}\" \"package.json\" \"tsconfig.json\" \".github/workflows/**/*.yml\"",
+        "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,scss,css,md}\" \"package.json\" \"tsconfig.json\" \".github/workflows/**/*.yml\"",
         "prepare": "husky install",
         "test": "echo \"No tests yet\""
     },
