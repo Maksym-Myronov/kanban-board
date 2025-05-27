@@ -4,5 +4,8 @@
 # Перейти в корінь проєкту
 cd "$(git rev-parse --show-toplevel)"
 
-# Запустити ESLint явно
+# Запустити ESLint з автофіксом
 npx eslint src --ext .ts,.tsx,.js,.jsx --fix
+
+# Запустити lint-staged
+npx lint-staged

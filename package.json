@@ -13,6 +13,9 @@
         "prepare": "husky install",
         "test": "echo \"No tests yet\""
     },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,scss,css,json,md}": "prettier --write"
+    },
     "dependencies": {
         "next": "15.3.2",
         "react": "^19.0.0",
