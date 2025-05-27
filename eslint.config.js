@@ -5,18 +5,17 @@ import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
     js.configs.recommended,
+    ...tseslint.configs.recommended,
     {
-        files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-        ignores: ['node_modules', 'dist', 'build'],
+        files: ['**/*.{js,ts,jsx,tsx}'],
+        ignores: ['node_modules', 'dist', 'build', '.next'],
         languageOptions: {
-            parser: tseslint.parser,
             parserOptions: {
                 ecmaVersion: 'latest',
                 sourceType: 'module',
                 ecmaFeatures: {
                     jsx: true,
                 },
-                project: './tsconfig.json',
             },
             globals: {
                 React: true,

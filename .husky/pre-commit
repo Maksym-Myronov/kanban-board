@@ -1,5 +1,8 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-npm test
-pnpm lint
+# Перейти в корінь проєкту
+cd "$(git rev-parse --show-toplevel)"
+
+# Запустити ESLint явно
+npx eslint src --ext .ts,.tsx,.js,.jsx --fix

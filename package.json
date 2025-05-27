@@ -7,7 +7,7 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
+        "lint": "eslint src --ext .ts,.tsx,.js,.jsx --fix",
         "format": "prettier --write .",
         "prepare": "husky install",
         "test": "echo \"No tests yet\""
