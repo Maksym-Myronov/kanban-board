@@ -21,6 +21,9 @@ export default [
                 React: true,
                 document: true,
                 window: true,
+                process: true,
+                console: true,
+                localStorage: true,
             },
         },
         plugins: {

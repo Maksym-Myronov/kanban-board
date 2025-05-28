@@ -1,0 +1,12 @@
+@use '@/styles/palette' as *;
+
+.board {
+    display: flex;
+    gap: 12px;
+    padding: 28px;
+    width: 72%;
+    border: 1px solid $status-task;
+    border-radius: 25px;
+    margin: 25px 32px;
+    background: var(--widget-info);
+}

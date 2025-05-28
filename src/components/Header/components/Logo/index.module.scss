@@ -1,0 +1,26 @@
+@use '@/styles/palette' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.logo {
+    @include d-flex(null, null, center);
+    gap: 20px;
+
+    &__link {
+        background: $green;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 12px;
+        cursor: pointer;
+        @include d-flex(null, center, center);
+    }
+
+    &__name {
+        font-weight: 500;
+
+        &__span {
+            font-weight: 700;
+            font-size: $header-size;
+        }
+    }
+}

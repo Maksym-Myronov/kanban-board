@@ -1,5 +1,9 @@
+@use '@/styles/mixins' as *;
+
 .theme-toggle {
-    padding: 0.5rem 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    @include d-flex(null, center, center);
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
