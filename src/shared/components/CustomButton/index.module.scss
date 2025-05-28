@@ -1,0 +1,24 @@
+@use '@/styles/palette' as *;
+
+.button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+
+    &__text {
+        padding: 7px 12px;
+        background: transparent;
+    }
+
+    &__contained {
+        padding: 7px 12px;
+        border-radius: 28px;
+    }
+
+    &__outlined {
+        padding: 7px 12px;
+        border: 1px solid $status-task;
+        border-radius: 28px;
+    }
+}

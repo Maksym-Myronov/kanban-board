@@ -1,4 +1,4 @@
-@use '../styles/mixins' as *;
+@use '@/styles/mixins' as *;
 
 *,
 *::before,
@@ -7,7 +7,7 @@
     margin: 0;
     border: none;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
 }
 
 a,
@@ -31,13 +31,19 @@ svg {
 }
 
 :root {
-    --bg-color: white;
-    --text-color: black;
+    --bg-color: #f2f2f2;
+    --text-color: #09090b;
+    --widget-bg: #f8fafc;
+    --widget-color: #f3f4f6;
+    --widget-info: #ffffff;
 }
 
 [data-theme='dark'] {
-    --bg-color: #121212;
-    --text-color: #f1f1f1;
+    --bg-color: #09090b;
+    --text-color: #f2f2f2;
+    --widget-bg: #1e1e1e;
+    --widget-color: #111827;
+    --widget-info: #1c1917;
 }
 
 html,
@@ -49,8 +55,8 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
+        background-color 0.8s ease,
+        color 0.8s ease;
 }
 
 // * {

@@ -1,0 +1,33 @@
+@use '@/styles/variables' as *;
+@use '@/styles/palette' as *;
+@use '@/styles/mixins' as *;
+
+.widget {
+    background: var(--widget-color);
+    padding: 12px;
+    border-radius: 12px;
+
+    &__title {
+        color: #4b5563;
+        font-size: $small-size;
+        font-weight: 500;
+    }
+
+    &__block {
+        @include d-flex(null, null, center);
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    &__line {
+        background: $green;
+        width: 4px;
+        height: 16px;
+    }
+
+    &__total {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+}

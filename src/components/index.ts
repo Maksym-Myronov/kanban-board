@@ -1,3 +1,4 @@
 export * from './ThemeContext';
 export * from './Header';
-export * from './ThemeToggle';
+export * from './Board';
+export * from './Board/components/InfoSideBar';

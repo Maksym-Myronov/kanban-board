@@ -1,0 +1,23 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/palette' as *;
+
+.header {
+    @include d-flex(null, space-between, center);
+    background: var(--widget-bg);
+    border-radius: 12px;
+    padding: 16px;
+    transition:
+        background-color 0.8s ease,
+        color 0.8s ease;
+
+    &__project {
+        color: #64748b;
+        font-size: 0.813rem;
+        font-weight: 500;
+
+        &__name {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+    }
+}

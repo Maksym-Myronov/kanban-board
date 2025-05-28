@@ -1,0 +1,10 @@
+@use '@/styles/palette' as *;
+
+.info {
+    border: 1px solid $status-task;
+    border-radius: 25px;
+    padding: 24px;
+    width: 28%;
+    margin: 25px 32px 25px 0;
+    background: var(--widget-info);
+}
