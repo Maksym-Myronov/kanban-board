@@ -1,14 +1,19 @@
 import React from 'react';
-import { Column } from './components';
+import { DndBoardClient } from './components';
+import { Column as ColumnType } from '@/core/types';
 
 import s from './index.module.scss';
 
-export const Board = () => {
+const COLUMNS: ColumnType[] = [
+    { id: 'TODO', title: 'To Do' },
+    { id: 'IN_PROGRESS', title: 'In Progress' },
+    { id: 'DONE', title: 'Done' },
+];
+
+export const Board = async () => {
     return (
         <div className={s.board}>
-            <Column title="To Do" />
-            <Column title="In Progress" />
-            <Column title="Done" />
+            <DndBoardClient column={COLUMNS} />
         </div>
     );
 };

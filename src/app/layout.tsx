@@ -5,6 +5,7 @@ import './globals.scss';
 import { cookies } from 'next/headers';
 import ThemeProviderWrapper from '@/core/providers/ThemeProviderWrapper';
 import { SessionWrapper } from '@/core/providers';
+import ProviderWrapper from '@/core/providers/Provider';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -40,7 +41,9 @@ export default async function RootLayout({
         <html lang="en" data-theme={currentTheme}>
             <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable}`}>
                 <ThemeProviderWrapper>
-                    <SessionWrapper>{children}</SessionWrapper>
+                    <ProviderWrapper>
+                        <SessionWrapper>{children}</SessionWrapper>
+                    </ProviderWrapper>
                 </ThemeProviderWrapper>
             </body>
         </html>
