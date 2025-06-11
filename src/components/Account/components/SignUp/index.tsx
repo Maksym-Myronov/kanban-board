@@ -14,8 +14,9 @@ const SignUp = () => {
     useEffect(() => {
         if (session?.user) {
             localStorage.setItem('user', JSON.stringify(session.user));
+            document.cookie = `user=${session.user.email}; path=/`;
         }
-    }, [session, router]);
+    }, [session]);
 
     const handleGoogleSignUp = () => {
         signIn('google', { callbackUrl: '/main' });

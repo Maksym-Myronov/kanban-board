@@ -24,6 +24,8 @@ export default [
                 process: true,
                 console: true,
                 localStorage: true,
+                fetch: true,
+                URL: true,
             },
         },
         plugins: {
