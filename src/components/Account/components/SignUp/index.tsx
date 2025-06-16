@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import GoogleButton from 'react-google-button';
 import { signIn, useSession } from 'next-auth/react';
+import { Route as RouteEnum } from '@/core/enum/index';
 
 import s from './index.module.scss';
 
@@ -13,13 +14,12 @@ const SignUp = () => {
 
     useEffect(() => {
         if (session?.user) {
-            localStorage.setItem('user', JSON.stringify(session.user));
-            document.cookie = `user=${session.user.email}; path=/`;
+            router.push(RouteEnum.Main);
         }
-    }, [session]);
+    }, [session, router]);
 
     const handleGoogleSignUp = () => {
-        signIn('google', { callbackUrl: '/main' });
+        signIn('google', { callbackUrl: RouteEnum.Main });
     };
 
     return (
@@ -38,7 +38,10 @@ const SignUp = () => {
                 />
                 <p className={s['signup__text']}>
                     Already have an account
-                    <span className={s['signup__link']} onClick={() => router.push('/login')}>
+                    <span
+                        className={s['signup__link']}
+                        onClick={() => router.push(RouteEnum.Login)}
+                    >
                         Login
                     </span>
                 </p>

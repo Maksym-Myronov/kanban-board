@@ -3,9 +3,12 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Poppins } from 'next/font/google';
 import './globals.scss';
 import { cookies } from 'next/headers';
-import ThemeProviderWrapper from '@/core/providers/ThemeProviderWrapper';
-import { SessionWrapper } from '@/core/providers';
-import ProviderWrapper from '@/core/providers/Provider';
+import {
+    Persist,
+    ProviderWrapper,
+    SessionWrapper,
+    ThemeProviderWrapper,
+} from '@/core/providers/index';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -42,7 +45,9 @@ export default async function RootLayout({
             <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable}`}>
                 <ThemeProviderWrapper>
                     <ProviderWrapper>
-                        <SessionWrapper>{children}</SessionWrapper>
+                        <Persist>
+                            <SessionWrapper>{children}</SessionWrapper>
+                        </Persist>
                     </ProviderWrapper>
                 </ThemeProviderWrapper>
             </body>

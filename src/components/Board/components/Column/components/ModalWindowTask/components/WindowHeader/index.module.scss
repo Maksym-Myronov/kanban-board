@@ -1,0 +1,10 @@
+.window {
+    display: flex;
+    justify-content: right;
+    padding: 24px 32px;
+
+    &__close {
+        cursor: pointer;
+        background: none;
+    }
+}

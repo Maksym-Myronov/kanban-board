@@ -6,6 +6,11 @@ jobs:
     build-test:
         runs-on: windows-latest
 
+        env:
+            GOOGLE_ID: ${{ secrets.GOOGLE_ID }}
+            GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
+            NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3
