@@ -1,3 +1,5 @@
+@use '@/styles/palette' as *;
+
 .column {
     flex: 1;
     display: flex;
@@ -26,5 +28,68 @@
         width: 370px;
         overflow-x: hidden;
         overflow-y: hidden;
+    }
+
+    &__create {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        cursor: pointer;
+        background: none;
+        padding: 12px;
+        transition: 0.5s;
+        border-radius: 8px;
+
+        &__btn {
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        &:hover {
+            background: #0515240f;
+            transition:
+                background 0.5s ease-out,
+                box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38);
+        }
+    }
+
+    &__add {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-height: 100%;
+        // height: 100%;
+
+        &__input {
+            width: 340px;
+            resize: none;
+            outline: none;
+        }
+
+        &__btn {
+            cursor: pointer;
+            background: $green;
+            border-radius: 8px;
+            padding: 5px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        &__close {
+            cursor: pointer;
+            background: $blocked-color;
+            border-radius: 8px;
+            padding: 5px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
     }
 }

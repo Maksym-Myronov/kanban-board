@@ -1,8 +1,10 @@
 'use client';
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Task } from '@/core/types';
-import { TaskWidget } from './components';
+import { CreateButton, TaskWidget, AddTask } from './components';
 import { useDroppable } from '@dnd-kit/core';
+import { MockStatus } from '@/core/enum/index';
 
 import s from './index.module.scss';
 
@@ -13,9 +15,16 @@ interface ColumnProps {
 }
 
 export const Column = ({ tasks, id, title }: ColumnProps) => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
     const { setNodeRef } = useDroppable({
         id,
     });
+
+    const handleChangeState = (): void => {
+        setIsOpen(prev => !prev);
+    };
+
     return (
         <div className={s.column} ref={setNodeRef}>
             <h2 className={s.column__title}>{title}</h2>
@@ -24,6 +33,10 @@ export const Column = ({ tasks, id, title }: ColumnProps) => {
                     <TaskWidget key={task.id} task={task} />
                 ))}
             </div>
+            {!isOpen && id === MockStatus.FirstStatus && (
+                <CreateButton handleChangeState={handleChangeState} />
+            )}
+            {isOpen && <AddTask handleChangeState={handleChangeState} />}
         </div>
     );
 };

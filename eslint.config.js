@@ -26,6 +26,8 @@ export default [
                 localStorage: true,
                 fetch: true,
                 URL: true,
+                HTMLSelectElement: true,
+                setTimeout: true,
             },
         },
         plugins: {

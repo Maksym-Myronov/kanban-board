@@ -4,7 +4,7 @@ import { ThemeProvider } from './ThemeContext';
 
 type Props = { children: React.ReactNode };
 
-export default async function ThemeProviderWrapper({ children }: Props) {
+export const ThemeProviderWrapper = async ({ children }: Props) => {
     const cookieStore = await cookies();
     const themeCookie = cookieStore.get(Attributes.Theme);
 
@@ -16,4 +16,4 @@ export default async function ThemeProviderWrapper({ children }: Props) {
     }
 
     return <ThemeProvider initialTheme={themeValue}>{children}</ThemeProvider>;
-}
+};

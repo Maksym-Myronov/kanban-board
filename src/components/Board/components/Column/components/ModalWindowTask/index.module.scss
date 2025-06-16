@@ -1,0 +1,18 @@
+.window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #091e428a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container {
+        background: white;
+        width: 1280px;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+}
