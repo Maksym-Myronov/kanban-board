@@ -56,8 +56,10 @@ export const TaskStatus = ({ status, id }: TaskProps) => {
                 onClick={e => e.stopPropagation()}
                 style={{
                     background: getStatusColor(initialStatus),
-                    color: '#000000',
-                    padding: '6px 6px 6px 10px',
+                    color: '#fff',
+                    appearance: 'none',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none',
                 }}
             >
                 <option value={current?.id} hidden>

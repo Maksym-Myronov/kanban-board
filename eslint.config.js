@@ -27,6 +27,8 @@ export default [
                 fetch: true,
                 URL: true,
                 HTMLSelectElement: true,
+                HTMLInputElement: true,
+                HTMLTextAreaElement: true,
                 setTimeout: true,
             },
         },

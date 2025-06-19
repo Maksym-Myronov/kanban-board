@@ -1,0 +1,38 @@
+@use '@/styles/palette' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.history {
+    margin-top: 20px;
+    padding-right: 0.5rem;
+
+    &__container {
+        @include d-flex(null, null, center);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    &__text {
+        color: #292a2e;
+    }
+
+    &__username {
+        font-size: $middle-size;
+        font-weight: 600;
+    }
+
+    &__action {
+        font-size: $middle-size;
+        padding: 0 5px;
+    }
+
+    &__theme {
+        font-size: $middle-size;
+        font-weight: 500;
+    }
+
+    &__date {
+        font-size: $small-size;
+        color: #505258;
+    }
+}
