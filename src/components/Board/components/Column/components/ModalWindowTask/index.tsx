@@ -1,5 +1,5 @@
 import React from 'react';
-import { WindowHeader, TaskStatus } from './components/index';
+import { WindowHeader, TaskStatus, Details, MainInfo, Automation, Date } from './components/index';
 
 import s from './index.module.scss';
 
@@ -14,7 +14,15 @@ export const ModalWindowTask = ({ id, status, closeModal }: ModalWindowProps) =>
         <div className={s.window}>
             <div className={s.window__container}>
                 <WindowHeader closeModal={closeModal} />
-                <TaskStatus status={status} id={id} />
+                <div className={s.window__block}>
+                    <MainInfo />
+                    <div className={s.window__sideContent}>
+                        <TaskStatus status={status} id={id} />
+                        <Details />
+                        <Automation />
+                        <Date />
+                    </div>
+                </div>
             </div>
         </div>
     );

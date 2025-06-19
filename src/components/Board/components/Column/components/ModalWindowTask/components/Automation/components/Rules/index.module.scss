@@ -1,0 +1,31 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.rules {
+    @include d-flex(null, space-between, center);
+    padding: 8px 12px;
+
+    &__runs {
+        font-size: $middle-size;
+        font-weight: 600;
+    }
+
+    &__text {
+        font-size: $middle-size;
+        margin-top: 5px;
+    }
+
+    &__btn {
+        @include d-flex(null, null, center);
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        padding: 3px 5px;
+        transition: 0.8s;
+
+        &:hover {
+            background: #091e420f;
+            transition: 0.8s;
+        }
+    }
+}

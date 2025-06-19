@@ -1,3 +1,5 @@
+@use '@/styles/mixins' as *;
+
 .window {
     position: absolute;
     top: 0;
@@ -5,14 +7,34 @@
     bottom: 0;
     right: 0;
     background: #091e428a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include d-flex(null, center, center);
 
     &__container {
         background: white;
         width: 1280px;
         margin: 0 auto;
         border-radius: 5px;
+        padding: 24px 32px;
+        position: relative;
+    }
+
+    &__block {
+        @include d-flex(null, space-between, center);
+    }
+
+    &__sideContent {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 0.5rem;
+    }
+
+    &__sideContent::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &__sideContent::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
     }
 }

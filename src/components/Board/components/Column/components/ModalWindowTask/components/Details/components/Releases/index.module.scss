@@ -1,0 +1,28 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/palette' as *;
+
+.releases {
+    @include d-flex(null, null, center);
+    margin-bottom: 12px;
+    margin-top: 8px;
+
+    &__title {
+        width: 137px;
+        font-size: $middle-size;
+    }
+
+    &__name {
+        color: $link;
+        font-size: $middle-size;
+        cursor: text;
+        padding: 5px;
+        width: 70%;
+        font-weight: 500;
+
+        &:hover {
+            border-radius: 4px;
+            background: #091e420f;
+        }
+    }
+}

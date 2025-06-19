@@ -1,0 +1,28 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/palette' as *;
+
+.work {
+    color: black;
+
+    &__trackTime {
+        margin: 48px 222px;
+        text-align: center;
+    }
+
+    &__text {
+        font-size: $middle-size;
+        margin: 24px 0;
+    }
+
+    &__log {
+        cursor: pointer;
+        color: $link;
+        font-size: $middle-size;
+        background: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

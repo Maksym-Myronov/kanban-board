@@ -1,0 +1,15 @@
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+
+.date {
+    color: #505258;
+    margin-top: 20px;
+
+    &__created {
+        font-size: $small-size;
+    }
+
+    &__updated {
+        font-size: $small-size;
+    }
+}

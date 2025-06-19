@@ -1,0 +1,37 @@
+@use '@/styles/mixins' as *;
+
+.activity {
+    &__title {
+        font-weight: 600;
+        color: black;
+        margin-bottom: 5px;
+    }
+
+    &__block {
+        border: 1px solid #091e4224;
+        padding: 4px 8px;
+        @include d-flex(null, null, center);
+        gap: 10px;
+        width: 401px;
+    }
+
+    &__btns {
+        background: none;
+        cursor: pointer;
+        transition: 0.8s;
+        padding: 4px;
+        border-radius: 3px;
+
+        &:hover {
+            background: #091e420f;
+            transition: 0.8s;
+        }
+    }
+
+    &__active {
+        background: #091e420f;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 3px;
+    }
+}

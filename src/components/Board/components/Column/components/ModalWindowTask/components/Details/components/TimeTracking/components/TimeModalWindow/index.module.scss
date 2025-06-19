@@ -1,0 +1,94 @@
+@use '@/styles/variables' as *;
+
+.time {
+    position: absolute;
+    top: 0;
+    left: 35%;
+
+    &__container {
+        background: white;
+        padding: 24px;
+        color: black;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &__track {
+        display: flex;
+        gap: 8px;
+        margin-top: 24px;
+    }
+
+    &__text {
+        font-size: $small-size;
+        font-weight: 700;
+        padding-bottom: 8px;
+        color: #44546f;
+    }
+
+    &__format {
+        font-size: $middle-size;
+        padding-top: 16px;
+        color: #292a2e;
+
+        &__ul {
+            padding-left: 22px;
+        }
+    }
+
+    &__li {
+        font-size: $middle-size;
+        color: #292a2e;
+        list-style: disc;
+    }
+
+    &__input {
+        width: 172px;
+        height: 40px;
+        border: 1px solid #8590a2;
+        border-radius: 3px;
+        outline: none;
+        padding-left: 10px;
+    }
+
+    &__saveBtn {
+        background-color: #ccc;
+        color: #888;
+        cursor: not-allowed;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        transition: background 0.2s;
+
+        &__enabled {
+            background-color: #22c55e;
+            color: #fff;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #16a34a;
+            }
+        }
+    }
+
+    &__cancel {
+        background: none;
+        cursor: pointer;
+        padding: 8px 16px;
+        transition: 0.8s;
+        border-radius: 6px;
+
+        &:hover {
+            background-color: #ccc;
+            transition: 0.8s;
+            cursor: pointer;
+        }
+    }
+
+    &__btns {
+        display: flex;
+        gap: 5px;
+        justify-content: right;
+        padding-top: 16px;
+    }
+}
