@@ -1,0 +1,27 @@
+.enable {
+    border-radius: 4px;
+    background: grey;
+    width: 24px;
+    text-align: center;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.disable {
+    transition: 0.8s;
+    background: none;
+    width: 24px;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        background: grey;
+        width: 24px;
+        transition: 0.8s;
+        text-align: center;
+        padding-top: 5px;
+        border-radius: 4px;
+    }
+}

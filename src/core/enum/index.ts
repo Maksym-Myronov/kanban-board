@@ -4,3 +4,4 @@ export * from './custom-button-variants';
 export * from './mock-data';
 export * from './route';
 export * from './tab-data';
+export * from './color-data';
