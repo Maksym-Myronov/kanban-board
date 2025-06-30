@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import s from './index.module.scss';
+import { Tiptap } from '../index';
 
 export const Description = () => {
     const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -15,9 +16,9 @@ Drag this task to the In Progress column on the Kanban board
 
 HOW TO CHECK YOUR PROGRESS:
 
-When you’re started new theme - please, change its status to In Progress
+When you're started new theme - please, change its status to In Progress
 
-When you’re done with the theme - check its checkbox and it will become Completed automatically.
+When you're done with the theme - check its checkbox and it will become Completed automatically.
 
 If for some reason you have skipped theme - please, change its status to Skipped
 
@@ -31,24 +32,15 @@ You have to track the time you have spent on this ticket and move it into Done c
         `,
     );
 
-    const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-    useEffect(() => {
-        if (isEditing) {
-            textareaRef.current?.focus();
-        }
-    }, [isEditing]);
-
-    useEffect(() => {
-        const el = textareaRef.current;
-        if (el) {
-            el.style.height = 'auto';
-            el.style.height = el.scrollHeight + 'px';
-        }
-    }, [text, isEditing]);
-
     const handleBlur = () => {
         setIsEditing(prev => !prev);
+    };
+
+    const toHTML = (plainText: string) => {
+        return plainText
+            .split('\n\n')
+            .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br />')}</p>`)
+            .join('');
     };
 
     return (
@@ -56,23 +48,20 @@ You have to track the time you have spent on this ticket and move it into Done c
             <h2 className={s.description__title}>Description</h2>
             {isEditing ? (
                 <div>
-                    <textarea
-                        ref={textareaRef}
-                        value={text}
-                        onChange={e => setText(e.target.value)}
-                        className={s.description__textarea}
-                    />
+                    <Tiptap content={toHTML(text)} onChange={setText} />
                     <div>
-                        <button className={s.description__saveBtn}>Save</button>
+                        <button className={s.description__saveBtn} onClick={handleBlur}>
+                            Save
+                        </button>
                         <button className={s.description__cancel} onClick={handleBlur}>
                             Cancel
                         </button>
                     </div>
                 </div>
             ) : (
-                <p onClick={handleBlur} className={s.description__text}>
+                <div onClick={handleBlur} className={s.description__text}>
                     {text}
-                </p>
+                </div>
             )}
         </div>
     );

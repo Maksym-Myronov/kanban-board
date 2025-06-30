@@ -21,7 +21,7 @@ export const ProgressBar = () => {
                     text={`${Math.round(percentage)}%`}
                     styles={buildStyles({
                         pathColor: `#00b894`,
-                        textColor: '#ffff',
+                        textColor: 'currentColor',
                         trailColor: '#dfe6e9',
                     })}
                 />

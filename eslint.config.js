@@ -30,6 +30,9 @@ export default [
                 HTMLInputElement: true,
                 HTMLTextAreaElement: true,
                 setTimeout: true,
+                HTMLDivElement: true,
+                Node: true,
+                MouseEvent: true,
             },
         },
         plugins: {

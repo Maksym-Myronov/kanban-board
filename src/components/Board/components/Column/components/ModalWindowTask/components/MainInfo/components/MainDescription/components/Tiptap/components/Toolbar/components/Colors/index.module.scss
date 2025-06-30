@@ -1,0 +1,21 @@
+.color {
+    position: absolute;
+    padding: 4px 8px;
+    width: 240px;
+    background: white;
+    z-index: 100;
+
+    &__grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    &__value {
+        width: 26px;
+        height: 26px;
+        border-radius: 4px;
+        cursor: pointer;
+        border: 1px solid #0b120e24;
+    }
+}
