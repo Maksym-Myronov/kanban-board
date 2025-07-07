@@ -1,67 +1,104 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Tiptap } from '../index';
+import { useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import { TextStyle } from '@tiptap/extension-text-style';
+import { Color } from '@tiptap/extension-color';
+import BulletList from '@tiptap/extension-bullet-list';
+import ListItem from '@tiptap/extension-list-item';
+import Heading from '@tiptap/extension-heading';
+import TaskItem from '@tiptap/extension-task-item';
+import OrderedList from '@tiptap/extension-ordered-list';
+import TaskList from '@tiptap/extension-task-list';
+import { useAppDispatch } from '@/hooks/useStore';
+import { updateDescription } from '@/store/mockDataSlice';
+import { CustomButton } from '@/shared/components';
 
 import s from './index.module.scss';
-import { Tiptap } from '../index';
 
-export const Description = () => {
+interface ModalWindowProps {
+    id: string;
+    description: string;
+}
+
+export const Description = ({ id, description }: ModalWindowProps) => {
     const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [text, setText] = useState<string>(
-        `Today you have to master the Enzyme and integration testing - check attached Checklist and proceed with themes started from first tab
 
-HOW TO START:
-
-Drag this task to the In Progress column on the Kanban board
-
-HOW TO CHECK YOUR PROGRESS:
-
-When you're started new theme - please, change its status to In Progress
-
-When you're done with the theme - check its checkbox and it will become Completed automatically.
-
-If for some reason you have skipped theme - please, change its status to Skipped
-
-WHAT IF YOU WILL HAVE A QUESTION:
-
-Just post it at comments section mentioned your mentor using AT sign (i.e. @Nick )
-
-WHAT TO DO WHEN ALL THEMES ARE FINISHED:
-
-You have to track the time you have spent on this ticket and move it into Done column of the Canban board
-        `,
-    );
+    const dispatch = useAppDispatch();
+    const isContentEmpty = !description || description.replace(/<[^>]*>?/gm, '').trim() === '';
+    const editor = useEditor({
+        extensions: [
+            StarterKit.configure({
+                bulletList: false,
+                listItem: false,
+            }),
+            TextStyle,
+            Color,
+            BulletList,
+            ListItem,
+            TaskList,
+            OrderedList,
+            TaskItem.configure({
+                nested: true,
+                HTMLAttributes: {
+                    class: 'my-custom-class',
+                },
+            }),
+            Heading.configure({
+                levels: [1, 2, 3, 4, 5, 6],
+            }),
+        ],
+        content: description,
+    });
 
     const handleBlur = () => {
         setIsEditing(prev => !prev);
     };
 
-    const toHTML = (plainText: string) => {
-        return plainText
-            .split('\n\n')
-            .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br />')}</p>`)
-            .join('');
+    const updateText = (): void => {
+        if (editor) {
+            const text = editor.getHTML();
+
+            dispatch(updateDescription({ id, description: text }));
+        }
+
+        setIsEditing(false);
+    };
+
+    const handleCancel = () => {
+        setIsEditing(false);
+        if (editor) {
+            editor.commands.setContent(description);
+        }
     };
 
     return (
         <div className={s.description}>
             <h2 className={s.description__title}>Description</h2>
-            {isEditing ? (
+            {isEditing && editor ? (
                 <div>
-                    <Tiptap content={toHTML(text)} onChange={setText} />
+                    <Tiptap editor={editor} />
                     <div>
-                        <button className={s.description__saveBtn} onClick={handleBlur}>
+                        <CustomButton classes={s.description__saveBtn} handleClick={updateText}>
                             Save
-                        </button>
-                        <button className={s.description__cancel} onClick={handleBlur}>
+                        </CustomButton>
+                        <CustomButton classes={s.description__cancel} handleClick={handleCancel}>
                             Cancel
-                        </button>
+                        </CustomButton>
                     </div>
                 </div>
-            ) : (
+            ) : isContentEmpty ? (
                 <div onClick={handleBlur} className={s.description__text}>
-                    {text}
+                    <p>Click to add a description...</p>
                 </div>
+            ) : (
+                <div
+                    onClick={handleBlur}
+                    className={s.description__text}
+                    dangerouslySetInnerHTML={{ __html: description }}
+                />
             )}
         </div>
     );

@@ -19,7 +19,7 @@
     }
 
     &__block {
-        @include d-flex(null, space-between, center);
+        @include d-flex(null, space-between, null);
     }
 
     &__sideContent {

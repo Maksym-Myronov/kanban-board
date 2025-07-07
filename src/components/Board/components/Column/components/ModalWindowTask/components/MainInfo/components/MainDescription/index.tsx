@@ -1,11 +1,17 @@
 import React from 'react';
 import { Description, Title } from './components';
 
-export const MainDescription = () => {
+interface ModalWindowProps {
+    description: string;
+    title: string;
+    id: string;
+}
+
+export const MainDescription = ({ id, description, title }: ModalWindowProps) => {
     return (
         <div>
-            <Title title="Second block Day 5: Introduction to Enzyme and Integration Testing" />
-            <Description />
+            <Title title={title} />
+            <Description id={id} description={description} />
         </div>
     );
 };

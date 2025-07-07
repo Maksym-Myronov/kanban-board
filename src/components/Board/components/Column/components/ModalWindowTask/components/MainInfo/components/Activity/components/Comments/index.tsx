@@ -1,6 +1,7 @@
 'use client';
 
 import React, { ChangeEvent, useState } from 'react';
+import { CustomButton } from '@/shared/components';
 
 import s from './index.module.scss';
 
@@ -32,10 +33,10 @@ export const Comments = () => {
                         />
                     </div>
                     <div className={s.comments__btns}>
-                        <button className={s.comments__saveBtn}>Save</button>
-                        <button className={s.comments__cancel} onClick={toggleShowState}>
+                        <CustomButton classes={s.comments__saveBtn}>Save</CustomButton>
+                        <CustomButton classes={s.comments__cancel} handleClick={toggleShowState}>
                             Cancel
-                        </button>
+                        </CustomButton>
                     </div>
                 </>
             )}

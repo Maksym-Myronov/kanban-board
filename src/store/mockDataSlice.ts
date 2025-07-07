@@ -33,6 +33,12 @@ const mockDataSlice = createSlice({
                 task.status = action.payload.status;
             }
         },
+        updateDescription(state, action: PayloadAction<{ id: string; description: string }>) {
+            const task = state.tasks.find(t => t.id === action.payload.id);
+            if (task) {
+                task.description = action.payload.description;
+            }
+        },
         openModal(state, action: PayloadAction<string>) {
             state.openModalId = action.payload;
         },
@@ -42,5 +48,6 @@ const mockDataSlice = createSlice({
     },
 });
 
-export const { createNewTask, updateTaskStatus, openModal, closeModal } = mockDataSlice.actions;
+export const { createNewTask, updateTaskStatus, openModal, closeModal, updateDescription } =
+    mockDataSlice.actions;
 export default mockDataSlice.reducer;
