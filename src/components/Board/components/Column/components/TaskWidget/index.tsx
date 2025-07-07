@@ -51,10 +51,15 @@ export const TaskWidget = ({ task }: TaskCardProps) => {
                 onClick={handleOpenModal}
             >
                 <h3 className={s.task__title}>{task.title}</h3>
-                <p className={s.task__description}>{task.description}</p>
             </div>
             {isModalWindowOpen && (
-                <ModalWindowTask id={task.id} status={task.status} closeModal={handleCloseModal} />
+                <ModalWindowTask
+                    id={task.id}
+                    status={task.status}
+                    closeModal={handleCloseModal}
+                    description={task.description}
+                    title={task.title}
+                />
             )}
         </>
     );
