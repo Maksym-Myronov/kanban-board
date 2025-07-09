@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useAppDispatch } from '@/hooks/useStore';
-import { createNewTask } from '@/store/mockDataSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { MockStatus } from '@/core/enum/index';
+import { useMutation } from '@apollo/client';
+import { CREATE_TASK } from '@/graphql/mutations/tasks/createTask';
 
 import s from '../../index.module.scss';
 
@@ -14,20 +14,23 @@ interface ButtonProps {
 
 export const AddTask = ({ handleChangeState }: ButtonProps) => {
     const [newTitle, setNewTitle] = useState<string>('');
-    const dispatch = useAppDispatch();
+    const [createTask] = useMutation(CREATE_TASK, {
+        refetchQueries: ['GetTasks'],
+    });
+
     const handleAddNewTask = (): void => {
         if (!newTitle.trim()) {
             return;
         }
 
-        dispatch(
-            createNewTask({
+        createTask({
+            variables: {
                 id: uuidv4(),
                 title: newTitle,
-                status: MockStatus.FirstStatus,
                 description: '',
-            }),
-        );
+                status: MockStatus.FirstStatus,
+            },
+        });
 
         handleChangeState();
         setNewTitle('');

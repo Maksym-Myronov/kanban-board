@@ -12,9 +12,9 @@ import Heading from '@tiptap/extension-heading';
 import TaskItem from '@tiptap/extension-task-item';
 import OrderedList from '@tiptap/extension-ordered-list';
 import TaskList from '@tiptap/extension-task-list';
-import { useAppDispatch } from '@/hooks/useStore';
-import { updateDescription } from '@/store/mockDataSlice';
 import { CustomButton } from '@/shared/components';
+import { useMutation } from '@apollo/client';
+import { UPDATE_DESCRIPTON } from '@/graphql/mutations/tasks/updateDescription';
 
 import s from './index.module.scss';
 
@@ -25,8 +25,8 @@ interface ModalWindowProps {
 
 export const Description = ({ id, description }: ModalWindowProps) => {
     const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [updateDescription] = useMutation(UPDATE_DESCRIPTON);
 
-    const dispatch = useAppDispatch();
     const isContentEmpty = !description || description.replace(/<[^>]*>?/gm, '').trim() === '';
     const editor = useEditor({
         extensions: [
@@ -61,7 +61,7 @@ export const Description = ({ id, description }: ModalWindowProps) => {
         if (editor) {
             const text = editor.getHTML();
 
-            dispatch(updateDescription({ id, description: text }));
+            updateDescription({ variables: { id, description: text } });
         }
 
         setIsEditing(false);
