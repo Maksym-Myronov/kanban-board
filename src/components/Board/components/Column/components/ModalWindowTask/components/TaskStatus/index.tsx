@@ -2,10 +2,10 @@
 
 import React, { useState, useCallback } from 'react';
 import { COLUMNS } from '@/components/Board';
-import { useAppDispatch } from '@/hooks/useStore';
-import { updateTaskStatus } from '@/store/mockDataSlice';
 import { Column as ColumnType } from '@/core/types';
 import { MockStatus } from '@/core/enum';
+import { useMutation } from '@apollo/client';
+import { UPDATE_TASK_STATUS } from '@/graphql/mutations/tasks/updateTask';
 
 import s from './index.module.scss';
 
@@ -16,8 +16,8 @@ interface TaskProps {
 
 export const TaskStatus = ({ status, id }: TaskProps) => {
     const [initialStatus, setInitialStatus] = useState<string>(status);
-    const dispatch = useAppDispatch();
 
+    const [updateTask] = useMutation(UPDATE_TASK_STATUS);
     const current = COLUMNS.find(col => col.id === initialStatus);
     const otherStatuses = COLUMNS.filter(col => col.id !== initialStatus);
 
@@ -26,14 +26,21 @@ export const TaskStatus = ({ status, id }: TaskProps) => {
             const newStatus = e.target.value;
             setInitialStatus(newStatus);
 
-            dispatch(
-                updateTaskStatus({
-                    id,
+            updateTask({
+                variables: {
+                    id: id,
                     status: newStatus as ColumnType['id'],
-                }),
-            );
+                },
+                optimisticResponse: {
+                    updateTask: {
+                        id: id,
+                        status: newStatus,
+                        __typename: 'Task',
+                    },
+                },
+            });
         },
-        [dispatch, id],
+        [updateTask, id],
     );
 
     const getStatusColor = (status: string) => {

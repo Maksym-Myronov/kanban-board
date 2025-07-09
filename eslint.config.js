@@ -33,6 +33,8 @@ export default [
                 HTMLDivElement: true,
                 Node: true,
                 MouseEvent: true,
+                Response: true,
+                Request: true,
             },
         },
         plugins: {
